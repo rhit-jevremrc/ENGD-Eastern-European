@@ -1,3 +1,10 @@
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.File;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.TargetDataLine;
+import javax.swing.JOptionPane;
 
 public class Song {
 	private String title;
@@ -34,6 +41,17 @@ public class Song {
 		return this.releaseYear;
 	}
 	
-	
+	public static void playSong() {
+		
+		InputStream music;
+		try {
+			music = new FileInputStream(new File(filepath));
+			AudioStream audios = new AudioInputStream((TargetDataLine) music);
+			AudioPlayer.player.start(audios);
+		}
+		catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "error!");
+		}
+	}
 	
 }
