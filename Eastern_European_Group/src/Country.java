@@ -14,6 +14,9 @@ public class Country {
 		this.songs.add(new Song(name));
 	}
 	
+	public String getName() {
+		return this.name;
+	}
 	
 	
 	

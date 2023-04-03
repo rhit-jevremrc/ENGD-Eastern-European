@@ -6,9 +6,17 @@ public class Main {
 
 		System.out.println("Hello!");
 		System.out.println("Hello World...");
+		Map map = new Map();
+		map.addCountry("Russia");
+		map.addCountry("Lithuania");
 		
+		map.display();
+		//while( true){
+			//map.updateDisplay();
+		//}
 	}
 //
 	//test
-
+	
+	
 }
