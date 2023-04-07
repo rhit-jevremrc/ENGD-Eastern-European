@@ -10,6 +10,11 @@ public class Country {
 		
 	}
 	
+	public void getLocation(){
+		//return coordinates for button
+		return;
+	}
+	
 	public void addSong(String name) {
 		this.songs.add(new Song(name));
 	}

@@ -20,50 +20,44 @@ public class Map {
 		JPanel mapPanel = new JPanel();
 		JPanel songPanel = new JPanel();
 		JPanel playerPanel = new JPanel();
-		JButton ballButton = new JButton("Add Ball");
-		JButton strikeButton = new JButton("Add Strike");
 		
 		frame.add(label, BorderLayout.CENTER);
 		frame.add(playerPanel, BorderLayout.SOUTH);
 		frame.add(songPanel, BorderLayout.WEST);
-		frame.add(mapPanel, BorderLayout.EAST);
-		
+		frame.add(mapPanel, BorderLayout.EAST);		
 		// TODO: Add buttons and listeners to make things work.
-		//panel.add(ballButton, BorderLayout.EAST);
-		//panel.add(strikeButton, BorderLayout.WEST);
 		
 		for (Country i : countries) {
 			JButton butt = new JButton(i.getName());
-			mapPanel.add(butt);
-			new CountryListener(i, butt);
-			
+			mapPanel.add(butt, BorderLayout.CENTER); //i.getLocation());
+			CountryListener cunt = new CountryListener(i, butt);
+			butt.addActionListener(cunt);
 		}
-		frame.setSize(200,600);
-		
-		
-		//BallListener balls = new BallListener();
-		//StrikeListener strikes = new StrikeListener();
-		
-		//ballButton.addActionListener(balls);
-		//strikeButton.addActionListener(strikes);
-		// The following line is given to show you how to use the given method:
-		//updateLabel(0, 0);
+		this.selectedCountry = countries.get(0);
+		updateLabel("I like to look at count ries");
 
+		
+		
+		
+		
+		
+		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
 	}
 	
 	public void addCountry(String name) {
-		
+		this.countries.add(new Country(name));
 	}
 	
 	public void updateLabel(String phrase) {
-		this.label.setText("This is a label able to label any panel");
+		this.label.setText(phrase);
 	}
 	
 	public void updateDisplay() {
 		//refresh Jpanels
+		//make sure selected country refreshes and changes panel accordingly
 	}
 	
 	
@@ -75,10 +69,36 @@ public class Map {
 		}
 		public void actionPerformed(ActionEvent e) {
 				selectedCountry = country;
+				updateLabel(selectedCountry.getName());
 				updateDisplay();
 			}
 		}
 	
+	class SongListener implements ActionListener {
+		private Song song;
+		public SongListener(Song song, JButton button) {
+			this.song = song;
+			button.addActionListener(this);
+		}
+		public void actionPerformed(ActionEvent e) {
+				//selectedSong = song;
+				updateDisplay();
+			}
+		}
+	
+	
+	
+	class AudioListener implements ActionListener {
+		private Song song;
+		public AudioListener(Song song, JButton button) {
+			this.song = song;
+			button.addActionListener(this);
+		}
+		public void actionPerformed(ActionEvent e) {
+				//if paused, play, if play pause, update logo
+				updateDisplay();
+			}
+		}//repeat class for skip buttons
 
 
 }

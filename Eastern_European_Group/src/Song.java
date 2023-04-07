@@ -28,14 +28,14 @@ public class Song {
 	
 	
 	public Song(String name) {
-		//this.filePath = ;
+		this.filePath = name + ".WAV";
 		this.title = name;
 		
 		
 	}
 
 	public Song(String name, String artist, String album) {
-		//this.filePath = ;
+		this.filePath = name + ".WAV";
 		this.title = name;
 		this.album = album;
 		this.artist = artist;
